@@ -1,0 +1,5 @@
+{
+  "hostname": "ip address of the philips hue hub",
+  "username": "api/username key used to access the philips hue hub",
+  "defaultGroup": "if no group is specificed in command perform action on this group"
+}

@@ -1,0 +1,17 @@
+{
+  "lights": {
+    "brightness": [
+      "lights brightness in x to x percent",
+      "set the lights brightness in x to x percent",
+      "Hey Hobson set the lights brightness in x to x percent"
+    ],
+    "on": [
+      "turn the lights on in x",
+      "Hey Hobson turn the lights on in x"
+    ],
+    "off": [
+      "turn the lights off in x",
+      "Hey Hobson turn the lights off in x"
+    ]
+  }
+}
