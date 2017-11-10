@@ -1,4 +1,5 @@
 exports = module.exports;
+const hobsonResponseTypes = require('hobson-response-types');
 const jsonfile = require('jsonfile');
 const path = require('path');
 const hue = require("node-hue-api"),
@@ -38,7 +39,9 @@ function getConfig(){
 
 
 exports.lights = {
-    brightness: function(values, callback) {
+    brightness: {
+      type: hobsonResponseTypes.text,
+      execute: function(values, callback) {
         const config = getConfig();
         const api = createApi(config);
         matchedGroup(api, values, config.defaultGroup)
@@ -48,8 +51,11 @@ exports.lights = {
             api.setGroupLightState(roomIndex, setBrigtness);
             return callback('setting light brightness to ' + brightness + ' percent');
           });
+      }
     },
-    on: function(values, callback) {
+    on: {
+      type: hobsonResponseTypes.text,
+      execute: function(values, callback) {
       const config = getConfig();
       const api = createApi(config);
       matchedGroup(api, values, config.defaultGroup)
@@ -57,8 +63,11 @@ exports.lights = {
           api.setGroupLightState(roomIndex, turnOn);
           return callback('turning on the lights');
         });
+      }
     },
-    off: function(values, callback) {
+    off: {
+      type: hobsonResponseTypes.text,
+      execute: function(values, callback) {
       const config = getConfig();
       const api = createApi(config);
       matchedGroup(api, values, config.defaultGroup)
@@ -66,5 +75,6 @@ exports.lights = {
           api.setGroupLightState(roomIndex, turnOff);
           return callback('turning off the lights');
         });
+      }
     }
 };
